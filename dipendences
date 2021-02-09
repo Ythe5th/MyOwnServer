@@ -3,3 +3,5 @@ LCD:
   https://github.com/the-raspberry-pi-guy/lcd
 LCD ( Non Ha Funzionato ):
   https://www.circuitbasics.com/raspberry-pi-i2c-lcd-set-up-and-programming/
+KEYBOARD:
+  wget -O keypad.py https://raw.githubusercontent.com/rainierez/MatrixKeypad_Python/master/matrix_keypad/RPi_GPIO.py
