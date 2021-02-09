@@ -1,1 +1,4 @@
-
+mv www wwwold
+mv MyOwnServer www
+chown -R www-data:www-data www
+chmod -R 750 www
