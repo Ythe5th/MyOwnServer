@@ -8,7 +8,7 @@ F = open( CMD_FILE , "r" )
 cmds = F.read().split( "\n" )
 F.close()
 cmd = ""
-os.system( "git clone" )
+os.system( "git clone https://github.com/Ythe5th/MyOwnServer /tmp/MyOwnServer" )
 
 for c in range( len( cmds ) ):
   cmd += cmds[c] + END_CMD

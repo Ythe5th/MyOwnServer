@@ -1,4 +1,4 @@
-mv www wwwold
-mv MyOwnServer www
-chown -R www-data:www-data www
-chmod -R 750 www
+mv /var/www /var/wwwold
+mv /tmp/MyOwnServer /var/www
+chown -R www-data:www-data /var/www
+chmod -R 750 /var/www

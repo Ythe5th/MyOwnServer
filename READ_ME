@@ -1,3 +1,5 @@
+REV 0.3.0:
+	-test server update
 REV 0.2:
 	-inseriti driver lcd e kb nel boot
 	-inserita funzione di aggiornamento
