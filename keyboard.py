@@ -13,31 +13,53 @@ def fpc( str ):# file_put_contents
   f.close()
 
 if __name__ == '__main__':
-  # Initialize
-  kp = keypad(columnCount = 3)
-  # waiting for a keypress
-  digit = None
-  while digit == None:
-    digit = kp.getKey()
-  # Print result
-  print( digit )
-  if digit == "*":
-    if keypressed:
-      fpc( "1" )
-    keypressed = 1 - keypressed
-  time.sleep(0.5)
-'''
-###### 4 Digit wait ######
-seq = []
-for i in range(4):
-digit = None
-while digit == None:
-digit = kp.getKey()
-seq.append(digit)
-time.sleep(0.4)
-
-# Check digit code
-print(seq)
-    if seq == [1, 2, 3, '#']:
-        print( "Code accepted" )
-    '''
+  kp = keypad( columnCount = 3 )
+  tolcd = ""
+  keypressed = 0
+  while True:
+    digit = None
+    while digit == None:
+      digit = kp.getKey()
+      if digit != None:
+        print( digit )
+        if keypressed:
+          if digit == "#":
+            tolcd += ";1"
+            keypressed = 0
+          elif digit == "*":
+            if tolcd[-1] != ";":
+              tolcd = tolcd[:-1]
+            else:
+              tolcd = ""
+              keypressed = 0
+          else:
+            if ";" not in tolcd:
+              tolcd += ";"
+            tolcd += digit
+        else:
+          if digit == "#":
+            tolcd = "Codice Funzione"
+            keypressed = 1
+          if digit == "*":
+            tolcd = ""
+        fpc( tolcd )
+    time.sleep( 0.3 )
+  '''
+  while True:
+    digit = None
+    while digit == None:
+        digit = kp.getKey()
+        if digit != None:
+            print( digit )
+            if keypressed and ( digit != "#" or digit != "*" ):
+              if ";" not in tolcd:
+                tolcd += ";"
+              tolcd += digit
+            elif digit == "#":
+              tolcd = "Codice Funzione"
+              keypressed = 1
+            if digit == "*":
+              tolcd = ""
+    fpc( tolcd )            
+    time.sleep( 0.3 )
+  '''
